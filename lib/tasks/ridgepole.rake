@@ -33,6 +33,7 @@ task 'db:migrate' do
 
   if Rails.env.development?
     Rake::Task['ridgepole:export'].invoke
+    Annotate::Migration.update_annotations
   end
 end
 
