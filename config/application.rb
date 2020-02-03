@@ -31,5 +31,11 @@ module RetrospectiveBoard
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # NOTE: Ridgepole の Schemafile に書くのでマイグレーションファイルは作らない
+    config.generators do |g|
+      g.active_record migration: false
+      g.test_framework :rspec, controller_specs: false
+    end
   end
 end
