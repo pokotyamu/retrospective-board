@@ -15,7 +15,7 @@
 
 FactoryBot.define do
   factory :board do
-    title { "MyString" }
-    event_on { "2020-02-08" }
+    sequence(:title) { |n| "第#{n}回" }
+    event_on { Date.today }
   end
 end
