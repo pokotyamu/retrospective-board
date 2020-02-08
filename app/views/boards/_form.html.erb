@@ -1,31 +1,41 @@
-<%= form_with(model: board, local: true) do |form| %>
-    <% if board.errors.any? %>
-	<div id="error_explanation">
-	    <h2><%= pluralize(board.errors.count, "error") %> prohibited this board from being saved:</h2>
+<%= form_for @board, :html => { :class => "form-horizontal board" } do |f| %>
 
-	    <ul>
-		<% board.errors.full_messages.each do |message| %>
-		    <li><%= message %></li>
-		<% end %>
-	    </ul>
-	</div>
-    <% end %>
-
-    <div class="actions">
-	<%= form_with scope: :board, local: true do |form| %>
-	    <p>
-		<%= form.label :title %><br>
-		<%= form.text_field :title %>
-	    </p>
-
-	    <p>
-		<%= form.label :event_on %><br>
-		<%= form.date_field :event_on %>
-	    </p>
-
-	    <p>
-		<%= form.submit %>
-	    </p>
-	<% end %>
+  <% if @board.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@board.errors.count, "error") %> prohibited this board from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @board.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:title) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :event_on, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.date_field :event_on, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:event_on) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                boards_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
 <% end %>
