@@ -15,4 +15,5 @@
 
 class Board < ApplicationRecord
   validates :title, presence: true
+  validates :event_on, presence: true
 end
