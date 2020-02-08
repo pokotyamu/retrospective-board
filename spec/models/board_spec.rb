@@ -16,5 +16,17 @@
 require 'rails_helper'
 
 RSpec.describe Board, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーション' do
+    subject { create(:board) }
+
+    context 'title' do
+      it '必須' do
+        subject.title = nil
+        is_expected.to be_invalid
+
+        subject.title = ''
+        is_expected.to be_invalid
+      end
+    end
+  end
 end
