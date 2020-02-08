@@ -14,4 +14,5 @@
 #
 
 class Card < ApplicationRecord
+  enum category: { keep: 1, problem: 2 }
 end

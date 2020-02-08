@@ -16,5 +16,16 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーション' do
+    subject { build(:card) }
+
+    context 'category' do
+      it '利用可のカテゴリのみ使える' do
+        %i(keep problem).each do |category|
+          subject.category = category
+          expect(subject).to be_valid
+        end
+      end
+    end
+  end
 end
