@@ -28,5 +28,12 @@ RSpec.describe Board, type: :model do
         is_expected.to be_invalid
       end
     end
+
+    context 'event_on' do
+      it '必須' do
+        subject.title = nil
+        is_expected.to be_invalid
+      end
+    end
   end
 end
