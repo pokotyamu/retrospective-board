@@ -1,7 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-タイトル: <%= @board.title %><br>
-開催日: <%= @board.event_on %><br>
+<p>
+  <strong>Title:</strong>
+  <%= @board.title %>
+</p>
 
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<p>
+  <strong>Event on:</strong>
+  <%= @board.event_on %>
+</p>
+
+<%= link_to '編集', edit_board_path(@board), class: 'btn btn-outline-dark' %>
+<%= link_to '戻る', boards_path, class: 'btn btn-outline-dark' %>
