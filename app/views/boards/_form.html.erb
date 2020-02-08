@@ -18,10 +18,10 @@
 
   <div class="field">
     <%= form.label :event_on %>
-    <%= form.date_select :event_on %>
+    <%= form.date_field :event_on %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit('保存', class: 'btn btn-outline-primary') %>
+
+  <div class="border-bottom my-3"></div>
 <% end %>

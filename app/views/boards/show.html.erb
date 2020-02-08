@@ -10,5 +10,5 @@
   <%= @board.event_on %>
 </p>
 
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<%= link_to '編集', edit_board_path(@board), class: 'btn btn-outline-dark' %>
+<%= link_to '戻る', boards_path, class: 'btn btn-outline-dark' %>

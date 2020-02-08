@@ -2,7 +2,7 @@
 
 <h1>Boards</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= board.title %></td>
         <td><%= board.event_on %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', board, class: 'btn btn-outline-dark' %> </button></td>
+        <td><%= link_to '編集', edit_board_path(board), class: 'btn btn-outline-dark' %></td>
+        <td><%= link_to '削除', board, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Board', new_board_path %>
+<%= link_to '新規ボード', new_board_path, class: 'btn btn-outline-primary' %>
