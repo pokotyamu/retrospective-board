@@ -17,3 +17,5 @@ require("channels")
 
 require("jquery");
 require("bootstrap");
+import 'bootstrap'
+import '../src/style.scss'
