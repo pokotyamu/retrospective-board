@@ -18,6 +18,11 @@
 # * `idx_cards_board_id`:
 #     * **`board_id`**
 #
+# ### Foreign Keys
+#
+# * `fk_cards_boards` (_ON DELETE => restrict_):
+#     * **`board_id => boards.id`**
+#
 
 class Card < ApplicationRecord
   belongs_to :board
