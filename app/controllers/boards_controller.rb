@@ -10,8 +10,8 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
-    @keeps = @board.cards.keep
-    @problems = @board.cards.problem
+    @keeps = Card.includes(:comments).where(board: @board, category: :keep)
+    @problems = Card.includes(:comments).where(board: @board, category: :problem)
     @card = @board.cards.build
   end
 
