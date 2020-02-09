@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :set_card, only: [:new, :create]
 
   def new
@@ -28,6 +28,14 @@ class CommentsController < ApplicationController
       else
         format.html { render :edit }
       end
+    end
+  end
+
+  def destroy
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @comment.card.board, notice: 'Board was successfully destroyed.' }
     end
   end
 
