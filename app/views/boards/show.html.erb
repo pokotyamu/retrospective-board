@@ -27,5 +27,32 @@
 	</div>
     </div>
 </div>
+
+<%= form_with(model: @card, local: true, url: board_cards_path(@board)) do |form| %>
+    <% if @card.errors.any? %>
+	<div id="error_explanation">
+	    <h2><%= pluralize(@card.errors.count, "error") %> prohibited this @card from being saved:</h2>
+
+	    <ul>
+		<% @card.errors.full_messages.each do |message| %>
+		    <li><%= message %></li>
+		<% end %>
+	    </ul>
+	</div>
+    <% end %>
+
+    <div class="field">
+	<%= form.label :category %>
+	<%= form.select :category, [:keep, :problem], {}, class: 'custom-select' %>
+    </div>
+
+    <div class="field">
+	<%= form.label :title %>
+	<%= form.text_area :title, class: 'col' %>
+    </div>
+
+    <%= form.submit('保存', class: 'btn btn-outline-primary') %>
+<% end %>
+
 <%= link_to '編集', edit_board_path(@board), class: 'btn btn-outline-dark' %>
 <%= link_to '戻る', boards_path, class: 'btn btn-outline-dark' %>

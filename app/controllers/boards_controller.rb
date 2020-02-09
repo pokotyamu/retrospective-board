@@ -12,6 +12,7 @@ class BoardsController < ApplicationController
   def show
     @keeps = @board.cards.keep
     @problems = @board.cards.problem
+    @card = @board.cards.build
   end
 
   # GET /boards/new
