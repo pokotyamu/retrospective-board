@@ -26,6 +26,7 @@
 
 class Card < ApplicationRecord
   belongs_to :board
+  has_many :comments
 
   enum category: { keep: 1, problem: 2 }
 end
