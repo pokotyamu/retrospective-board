@@ -28,12 +28,12 @@ class CardsController < ApplicationController
   end
 
   def update
-    if @card.update(card_params)
-      format.html { redirect_to @board, notice: 'Board was successfully created.' }
-      format.json { render :show, status: :created, location: @card }
-    else
-      format.html { render :new }
-      format.json { render json: @card.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @card.update(card_params)
+        format.html { redirect_to @board, notice: 'Board was successfully created.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
