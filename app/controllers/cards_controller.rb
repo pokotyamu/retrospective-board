@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_board, only: [:create]
+  before_action :set_card, only: [:edit, :destroy]
 
   def create
     card = @board.cards.build(card_params)
@@ -7,10 +8,28 @@ class CardsController < ApplicationController
     respond_to do |format|
       if card.save
         format.html { redirect_to @board, notice: 'Board was successfully created.' }
-        format.json { render :show, status: :created, location: @board }
       else
         format.html { render :new }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+  end
+
+  def destroy
+    @card.destroy
+    respond_to do |format|
+      format.html { redirect_to @card.board, notice: 'Board was successfully destroyed.' }
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @card.update(card_params)
+        format.html { redirect_to @board, notice: 'Board was successfully created.' }
+      else
+        format.html { render :new }
       end
     end
   end
@@ -21,7 +40,11 @@ class CardsController < ApplicationController
     @board = Board.find(params[:board_id])
   end
 
+  def set_card
+    @card = Card.find(params[:id])
+  end
+
   def card_params
-    params.require(:card).permit(:title, :category)
+    params.require(:card).permit(:title, :category, :comment)
   end
 end

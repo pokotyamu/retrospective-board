@@ -1,34 +1,32 @@
 # ## Schema Information
 #
-# Table name: `cards`
+# Table name: `comments`
 #
 # ### Columns
 #
 # Name              | Type               | Attributes
 # ----------------- | ------------------ | ---------------------------
 # **`id`**          | `integer`          | `not null, primary key`
-# **`board_id`**    | `integer`          | `not null`
-# **`title`**       | `string`           | `not null`
-# **`category`**    | `integer`          | `not null`
+# **`card_id`**     | `integer`          | `not null`
+# **`content`**     | `text`             | `not null`
 # **`created_at`**  | `datetime`         | `not null`
 # **`updated_at`**  | `datetime`         | `not null`
 #
 # ### Indexes
 #
-# * `idx_cards_board_id`:
-#     * **`board_id`**
+# * `idx_comments_card_id`:
+#     * **`card_id`**
 #
 # ### Foreign Keys
 #
-# * `fk_cards_boards` (_ON DELETE => restrict_):
-#     * **`board_id => boards.id`**
+# * `fk_comments_cards` (_ON DELETE => restrict_):
+#     * **`card_id => cards.id`**
 #
 
 FactoryBot.define do
-  factory :card do
-    board
+  factory :comment do
+    card
 
-    sequence(:title) { |n| "第#{n}回" }
-    category { 1 }
+    content { "MyString" }
   end
 end

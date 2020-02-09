@@ -15,3 +15,14 @@ create_table "cards", id: :serial, force: :cascade do |t|
   t.datetime "updated_at", null: false
   t.index ["board_id"], name: "idx_cards_board_id"
 end
+
+create_table "comments", id: :serial, force: :cascade do |t|
+  t.integer "card_id", null: false
+  t.text "content", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["card_id"], name: "idx_comments_card_id"
+end
+
+add_foreign_key "cards", "boards", name: "fk_cards_boards", on_delete: :restrict
+add_foreign_key "comments", "cards", name: "fk_comments_cards", on_delete: :restrict
