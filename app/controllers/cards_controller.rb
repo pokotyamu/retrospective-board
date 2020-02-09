@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_board, only: [:create]
-  before_action :set_card, only: [:destroy]
+  before_action :set_card, only: [:edit, :destroy]
 
   def create
     card = @board.cards.build(card_params)
