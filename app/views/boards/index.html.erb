@@ -16,9 +16,21 @@
       <tr>
         <td><%= board.title %></td>
         <td><%= board.event_on %></td>
-        <td><%= link_to '詳細', board, class: 'btn btn-outline-dark' %> </button></td>
-        <td><%= link_to '編集', edit_board_path(board), class: 'btn btn-outline-dark' %></td>
-        <td><%= link_to '削除', board, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %></td>
+        <td>
+	    <%= link_to board, class: 'btn btn-outline-dark' do %>
+		<i class="fas fa-chalkboard"></i>
+	    <% end %>
+	</td>
+        <td>
+	    <%= link_to edit_board_path(board), class: 'btn btn-outline-dark' do %>
+		<i class="fas fa-edit"></i>
+	    <% end %>
+	</td>
+        <td>
+	    <%= link_to  board, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+		<i class="fas fa-trash-alt"></i>
+	    <% end %>
+	</td>
       </tr>
     <% end %>
   </tbody>
