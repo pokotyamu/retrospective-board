@@ -8,10 +8,8 @@ class CardsController < ApplicationController
     respond_to do |format|
       if card.save
         format.html { redirect_to @board, notice: 'Board was successfully created.' }
-        format.json { render :show, status: :created, location: @card }
       else
         format.html { render :new }
-        format.json { render json: card.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -23,7 +21,6 @@ class CardsController < ApplicationController
     @card.destroy
     respond_to do |format|
       format.html { redirect_to @card.board, notice: 'Board was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
