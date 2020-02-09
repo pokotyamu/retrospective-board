@@ -14,7 +14,7 @@
 #
 
 class Board < ApplicationRecord
-  has_many :cards
+  has_many :cards, dependent: :destroy
 
   validates :title, presence: true
   validates :event_on, presence: true

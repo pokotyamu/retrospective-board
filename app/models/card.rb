@@ -26,7 +26,7 @@
 
 class Card < ApplicationRecord
   belongs_to :board
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   enum category: { keep: 1, problem: 2 }
 end
