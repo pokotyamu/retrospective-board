@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_board, only: [:create, :destroy]
+  before_action :set_board, only: [:create]
   before_action :set_card, only: [:destroy]
 
   def create
@@ -22,7 +22,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to @board, notice: 'Board was successfully destroyed.' }
+      format.html { redirect_to @card.board, notice: 'Board was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
