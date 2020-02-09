@@ -10,6 +10,9 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    @keeps = @board.cards.keep
+    @problems = @board.cards.problem
+    @card = @board.cards.build
   end
 
   # GET /boards/new

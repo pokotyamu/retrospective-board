@@ -1,21 +1,26 @@
 # ## Schema Information
 #
-# Table name: `boards`
+# Table name: `cards`
 #
 # ### Columns
 #
 # Name              | Type               | Attributes
 # ----------------- | ------------------ | ---------------------------
 # **`id`**          | `integer`          | `not null, primary key`
+# **`board_id`**    | `integer`          | `not null`
 # **`title`**       | `string`           | `not null`
-# **`event_on`**    | `date`             | `not null`
+# **`category`**    | `integer`          | `not null`
 # **`created_at`**  | `datetime`         | `not null`
 # **`updated_at`**  | `datetime`         | `not null`
 #
+# ### Indexes
+#
+# * `idx_cards_board_id`:
+#     * **`board_id`**
+#
 
-class Board < ApplicationRecord
-  has_many :cards
+class Card < ApplicationRecord
+  belongs_to :board
 
-  validates :title, presence: true
-  validates :event_on, presence: true
+  enum category: { keep: 1, problem: 2 }
 end
