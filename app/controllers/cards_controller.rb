@@ -7,7 +7,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if card.save
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
+        format.html { redirect_to @board }
       else
         format.html { render :new }
       end
@@ -20,14 +20,14 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to @card.board, notice: 'Board was successfully destroyed.' }
+      format.html { redirect_to @card.board }
     end
   end
 
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
+        format.html { redirect_to @board }
       else
         format.html { render :new }
       end
