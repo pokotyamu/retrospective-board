@@ -10,47 +10,51 @@
 	<div class="col-6">
 	    <strong> KEEP </strong>
 	    <ul class="list-group">
-		<% @keeps.each do |keep| %>
-		    <li class="list-group-item">
-			<div class="d-flex bd-highlight">
-			    <div class="p-2 flex-grow-1 bd-highlight">
-				<%= keep.title %>
-			    </div>
-			    <div class="mr-auto p-2 bd-highlight">
-				<%= link_to new_card_comment_path(keep), class: 'btn btn-outline-primary' do %>
-				    <i class="far fa-comments"></i></button>
-				<% end %>
-
-			    </div>
-
-			    <div class="p-2 bd-highlight">
-				<%= link_to card_path(keep), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
-				    <i class="fas fa-trash-alt"></i>
-				<% end %>
-			    </div>
-			</div>
-		    </li>
-		    <% keep.comments.each do |comment| %>
+		<% if @keeps.empty? %>
+		    <li class="list-group-item bg-warning text-white"> Keep を書いてください。</li>
+		<% else %>
+		    <% @keeps.each do |keep| %>
 			<li class="list-group-item">
 			    <div class="d-flex bd-highlight">
+				<div class="p-2 flex-grow-1 bd-highlight text-white bg-warning">
+				    <%= keep.title %>
+				</div>
 				<div class="mr-auto p-2 bd-highlight">
-				    <i class="far fa-comments"></i>
-				</div>
-				<div class="p-2 flex-grow-1 bd-highlight">
-				     <%= comment.content %>
-				</div>
-				<div class="p-2 bd-highlight">
-				    <%= link_to edit_comment_path(comment), class: 'btn btn-outline-primary' do %>
-					<i class="fas fa-edit"></i>
+				    <%= link_to new_card_comment_path(keep), class: 'btn btn-outline-primary' do %>
+					<i class="far fa-comments"></i></button>
 				    <% end %>
 				</div>
+
 				<div class="p-2 bd-highlight">
-				    <%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+				    <%= link_to card_path(keep), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
 					<i class="fas fa-trash-alt"></i>
 				    <% end %>
 				</div>
 			    </div>
 			</li>
+			<% keep.comments.each do |comment| %>
+			    <li class="list-group-item">
+				<div class="d-flex bd-highlight">
+				    <div class="mr-auto p-2 bd-highlight ">
+					<i class="far fa-comments"></i>
+				    </div>
+
+				    <div class="p-2 flex-grow-1 bd-highlight">
+					<%= comment.content %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to edit_comment_path(comment), class: 'btn btn-outline-primary' do %>
+					    <i class="fas fa-edit"></i>
+					<% end %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+					    <i class="fas fa-trash-alt"></i>
+					<% end %>
+				    </div>
+				</div>
+			    </li>
+			<% end %>
 		    <% end %>
 		<% end %>
 	    </ul>
@@ -59,53 +63,59 @@
 	<div class="col-6">
 	    <strong> Problem </strong>
 	    <ul class="list-group">
-		<% @problems.each do |problem| %>
-		    <li class="list-group-item">
-			<div class="d-flex bd-highlight">
-			    <div class="p-2 flex-grow-1 bd-highlight">
-				<%= problem.title %>
-			    </div>
-			    <div class="mr-auto p-2 bd-highlight">
-				<%= link_to new_card_comment_path(problem), class: 'btn btn-outline-primary' do %>
-				    <i class="far fa-comments"></i></button>
-				<% end %>
-
-			    </div>
-
-			    <div class="p-2 bd-highlight">
-				<%= link_to card_path(problem), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
-				    <i class="fas fa-trash-alt"></i>
-				<% end %>
-			    </div>
-			</div>
-		    </li>
-		    <% problem.comments.each do |comment| %>
+		<% if @problems.empty? %>
+		    <li class="list-group-item bg-danger text-white"> Keep を書いてください。</li>
+		<% else %>
+		    <% @problems.each do |problem| %>
 			<li class="list-group-item">
 			    <div class="d-flex bd-highlight">
+				<div class="p-2 flex-grow-1 bd-highlight text-white bg-danger">
+				    <%= problem.title %>
+				</div>
 				<div class="mr-auto p-2 bd-highlight">
-				    <i class="far fa-comments"></i>
-				</div>
-				<div class="p-2 flex-grow-1 bd-highlight">
-				     <%= comment.content %>
-				</div>
-				<div class="p-2 bd-highlight">
-				    <%= link_to edit_comment_path(comment), class: 'btn btn-outline-primary' do %>
-					<i class="fas fa-edit"></i>
+				    <%= link_to new_card_comment_path(problem), class: 'btn btn-outline-primary' do %>
+					<i class="far fa-comments"></i></button>
 				    <% end %>
+
 				</div>
+
 				<div class="p-2 bd-highlight">
-				    <%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+				    <%= link_to card_path(problem), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
 					<i class="fas fa-trash-alt"></i>
 				    <% end %>
 				</div>
 			    </div>
 			</li>
+			<% problem.comments.each do |comment| %>
+			    <li class="list-group-item">
+				<div class="d-flex bd-highlight">
+				    <div class="mr-auto p-2 bd-highlight">
+					<i class="far fa-comments"></i>
+				    </div>
+				    <div class="p-2 flex-grow-1 bd-highlight">
+					<%= comment.content %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to edit_comment_path(comment), class: 'btn btn-outline-primary' do %>
+					    <i class="fas fa-edit"></i>
+					<% end %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+					    <i class="fas fa-trash-alt"></i>
+					<% end %>
+				    </div>
+				</div>
+			    </li>
+			<% end %>
 		    <% end %>
 		<% end %>
 	    </ul>
 	</div>
     </div>
 </div>
+
+<div class="border-bottom my-3"></div>
 
 <%= form_with(model: @card, local: true, url: board_cards_path(@board)) do |form| %>
     <% if @card.errors.any? %>
@@ -119,17 +129,14 @@
 	    </ul>
 	</div>
     <% end %>
-
-    <div class="field">
-	<%= form.label :category %>
-	<%= form.select :category, [:keep, :problem], {}, class: 'custom-select' %>
+    <div class="d-flex flex-row">
+	<div class="field p-2">
+	    <%= form.select :category, [:keep, :problem], {}, class: 'custom-select' %>
+	</div>
+	<div class="field p-8">
+	    <%= form.text_area :title, class: 'col' %>
+	</div>
     </div>
-
-    <div class="field">
-	<%= form.label :title %>
-	<%= form.text_area :title, class: 'col' %>
-    </div>
-
     <%= form.submit('保存', class: 'btn btn-outline-primary') %>
 <% end %>
 
