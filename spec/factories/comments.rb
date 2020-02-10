@@ -11,6 +11,7 @@
 # **`content`**     | `text`             | `not null`
 # **`created_at`**  | `datetime`         | `not null`
 # **`updated_at`**  | `datetime`         | `not null`
+# **`category`**    | `integer`          | `default(0), not null`
 #
 # ### Indexes
 #

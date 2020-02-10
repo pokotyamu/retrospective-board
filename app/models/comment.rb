@@ -11,6 +11,7 @@
 # **`content`**     | `text`             | `not null`
 # **`created_at`**  | `datetime`         | `not null`
 # **`updated_at`**  | `datetime`         | `not null`
+# **`category`**    | `integer`          | `default(0), not null`
 #
 # ### Indexes
 #
@@ -25,4 +26,6 @@
 
 class Comment < ApplicationRecord
   belongs_to :card
+
+  enum category: { comment: 0, try: 1 }
 end
