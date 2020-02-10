@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div class="field p-2">
+      <%= form.select :category, [:comment, :try], {}, class: 'custom-select' %>
+  </div>
+
   <div class="field">
       <%= form.label :content %>
       <%= form.text_area :content %>
