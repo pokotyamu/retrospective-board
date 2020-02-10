@@ -32,7 +32,7 @@
 				</div>
 			    </div>
 			</li>
-			<% keep.comments.each do |comment| %>
+			<% keep.comments.comment.each do |comment| %>
 			    <li class="list-group-item">
 				<div class="d-flex bd-highlight">
 				    <div class="mr-auto p-2 bd-highlight ">
@@ -40,6 +40,29 @@
 				    </div>
 
 				    <div class="p-2 flex-grow-1 bd-highlight">
+					<%= comment.content %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to edit_comment_path(comment), class: 'btn btn-outline-primary' do %>
+					    <i class="fas fa-edit"></i>
+					<% end %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+					    <i class="fas fa-trash-alt"></i>
+					<% end %>
+				    </div>
+				</div>
+			    </li>
+			<% end %>
+			<% keep.comments.try.each do |comment| %>
+			    <li class="list-group-item">
+				<div class="d-flex bd-highlight">
+				    <div class="mr-auto p-2 bd-highlight ">
+					<i class="fas fa-flask"></i>
+				    </div>
+
+				    <div class="p-2 flex-grow-1 bd-highlight bg-primary text-white">
 					<%= comment.content %>
 				    </div>
 				    <div class="p-2 bd-highlight">
@@ -93,6 +116,52 @@
 					<i class="far fa-comments"></i>
 				    </div>
 				    <div class="p-2 flex-grow-1 bd-highlight">
+					<%= comment.content %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to edit_comment_path(comment), class: 'btn btn-outline-primary' do %>
+					    <i class="fas fa-edit"></i>
+					<% end %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+					    <i class="fas fa-trash-alt"></i>
+					<% end %>
+				    </div>
+				</div>
+			    </li>
+			<% end %>
+			<% problem.comments.comment.each do |comment| %>
+			    <li class="list-group-item">
+				<div class="d-flex bd-highlight">
+				    <div class="mr-auto p-2 bd-highlight ">
+					<i class="far fa-comments"></i>
+				    </div>
+
+				    <div class="p-2 flex-grow-1 bd-highlight">
+					<%= comment.content %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to edit_comment_path(comment), class: 'btn btn-outline-primary' do %>
+					    <i class="fas fa-edit"></i>
+					<% end %>
+				    </div>
+				    <div class="p-2 bd-highlight">
+					<%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+					    <i class="fas fa-trash-alt"></i>
+					<% end %>
+				    </div>
+				</div>
+			    </li>
+			<% end %>
+			<% problem.comments.try.each do |comment| %>
+			    <li class="list-group-item">
+				<div class="d-flex bd-highlight">
+				    <div class="mr-auto p-2 bd-highlight ">
+					<i class="fas fa-flask"></i>
+				    </div>
+
+				    <div class="p-2 flex-grow-1 bd-highlight bg-primary text-white">
 					<%= comment.content %>
 				    </div>
 				    <div class="p-2 bd-highlight">
