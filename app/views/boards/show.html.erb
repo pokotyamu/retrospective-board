@@ -133,9 +133,7 @@
 	<div class="field p-2">
 	    <%= form.select :category, [:keep, :problem], {}, class: 'custom-select' %>
 	</div>
-	<div class="field p-8">
-	    <%= form.text_area :title, class: 'col' %>
-	</div>
+	<%= form.text_area :title, class: 'form-control', row: 3 %>
     </div>
     <%= form.submit('保存', class: 'btn btn-outline-primary') %>
 <% end %>
